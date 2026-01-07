@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Options
+shutdown="  Shutdown"
+reboot="  Reboot"
+lock="  Lock"
+logout="  Logout"
+
+# Rofi Command
+# We re-use your glass config but override the prompt
+chosen=$(echo -e "$lock\n$logout\n$reboot\n$shutdown" | rofi -dmenu -p "System" -theme ~/.config/rofi/config.rasi)
+
+# Actions
+case "$chosen" in
+    "$shutdown")
+        systemctl poweroff
+        ;;
+    "$reboot")
+        systemctl reboot
+        ;;
+    "$lock")
+        # If you don't have i3lock, install it: sudo pacman -S i3lock
+        betterlockscreen -l blur
+        ;;
+    "$logout")
+        i3-msg exit
+        ;;
+esac

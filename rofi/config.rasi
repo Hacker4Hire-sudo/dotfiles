@@ -1,0 +1,74 @@
+configuration {
+    /* --- Enable Icons --- */
+    show-icons: true;
+    icon-theme: "Papirus";
+    
+    /* --- Layout --- */
+    modi: "drun,run,window";
+    display-drun: "Apps";
+    font: "JetBrainsMono Nerd Font Medium 12";
+}
+
+@theme "/dev/null"
+
+* {
+    /* --- COLORS --- */
+    /* The last two digits (B3) control the transparency. 
+       00 = Invisible, FF = Solid, B3 = Nice Glass */
+    bg: #111111B3;      
+    
+    bg-alt: #111111;    /* Solid Black for selected items */
+    fg: #FFFFFF;        /* White text */
+    accent: #FFD700;    /* Gold Highlight */
+
+    background-color: transparent; /* vital for transparency */
+    text-color: @fg;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 45%;
+    background-color: @bg; /* Applies the transparent color here */
+    border: 2px;
+    border-color: @accent;
+    border-radius: 15px;   /* Rounded corners */
+}
+
+inputbar {
+    padding: 12px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+    padding: 0px 10px 0px 0px;
+}
+
+entry {
+    placeholder: "Search...";
+    text-color: @fg;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px;
+    text-color: @fg;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 10px 0 0;
+}
+
+element selected {
+    background-color: @accent; /* Gold bar when selected */
+    text-color: #000000;       /* Black text on Gold */
+    border-radius: 10px;
+}

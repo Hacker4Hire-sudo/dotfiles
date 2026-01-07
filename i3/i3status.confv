@@ -1,0 +1,49 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+        color_good = "#FFD700"     # Gold
+        color_degraded = "#E5E500" # Yellow
+        color_bad = "#E53935"      # Red
+}
+
+# --- What to show on the bar ---
+# order += "ipv6"               # Disabled
+# order += "wireless _first_"   # Disabled (No Wifi)
+# order += "battery all"        # Disabled (No Battery)
+
+order += "ethernet _first_"     # Keep ethernet (Wired connection)
+order += "disk /"
+order += "load"
+order += "memory"
+order += "tztime local"
+
+ethernet _first_ {
+        format_up = "E: %ip"
+        format_down = "E: down"
+}
+
+disk "/" {
+        format = "%avail"
+}
+
+load {
+        format = "Load: %1min"
+}
+
+memory {
+        format = "Mem: %used | %available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%Y-%m-%d %I:%M %p" 
+}
